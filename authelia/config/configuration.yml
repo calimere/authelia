@@ -1,0 +1,65 @@
+# yamllint disable rule:comments-indentation
+---
+###############################################################################
+#                           Authelia Configuration                            #
+###############################################################################
+
+
+log:
+  level: 'info'
+
+telemetry:
+  metrics:
+    enabled: false
+
+authentication_backend:
+  password_reset:
+    disable: false
+  file:
+    path: '/config/users_database.yml'
+    watch: false
+    search:
+      email: false
+      case_insensitive: false
+    password:
+      algorithm: argon2
+      argon2:
+        variant: argon2id
+        iterations: 3
+        memory: 65536
+        parallelism: 4
+        key_length: 32
+        salt_length: 16
+
+totp:
+  disable: true
+
+session:
+  secret: '3i7U9$3$FJ!7gw-X#u5Ss_#i4r7ZUpkHS_Xzt#5!-S-52z22rK!UaX7f36$z9#7T5AkSwJa$ytj!9!_L6p8-n_4KT6DCk-p!_CJX$B84#78zn2Ukiu6-97#w'
+  name: 'authelia_session'
+  same_site: 'lax'
+  inactivity: '5m'
+  expiration: '1h'
+  remember_me: '1M'
+  domain: 28hfg13220.fr
+
+identity_validation:
+  reset_password:
+    jwt_secret: 'Si35ugX$U9Zr#3J-UF77p4#w!$7i_sfSz!2aU!5-HXzr6k37tX_K-S5$z#22n8L97!!Twa_9#4pJTtAyj-k$5K_66S8J97#4_-z6Bn#X8kk$-U2!piCD7wCu'
+
+storage:
+  local:
+    path: /config/storage
+  encryption_key: '34#Ui3$Z7ig7p7uS#rsw!9-5F$X_UJS6XkH!$#53S-2!r75-_2aKz2XUzzft$!9-JT56kpKt_wTyL8n!7#94aAS6_ju-kk!-B72zC4U#C9wJp768XnD#i_$8'
+
+access_control:
+  default_policy: 'one_factor'
+  rules:
+    - domain: 
+      - "auth.28hfg13220.fr"
+      policy: 'one_factor'
+    
+
+notifier:
+  filesystem:
+    filename: '/config/notification.txt'

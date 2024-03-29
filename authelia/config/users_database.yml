@@ -1,0 +1,9 @@
+users:
+  remy:
+    disabled: false
+    displayname: 'remy'
+    password: '$argon2id$v=19$m=65536,t=3,p=4$eU7BhRYtQz1hpcH00a/g9w$jAQuiajCEIZ6vJsCkK49jgOMKCKfBQ62d+2FvcetLTE'
+    email: 'remy.hildenbrand@gmail.com'
+    groups:
+      - admins
+      - dev
